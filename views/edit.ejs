@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= filename %> Edit</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-zinc-900 text-white">
+    <div class="container mx-auto mt-8">
+        <div class="">
+            <h1 class="text-5xl font-bold tracking-tighter my-5"><%= filename %></h1>
+            <form action="/create" method="post" class="p-10 w-full flex flex-col gap-5" action="">
+                <input type="text" class="p-2 w-full bg-zinc-800 rounded-lg" name="title" id="title"
+                    placeholder="Enter title" value="<%= filename %>">
+                <textarea class="p-2 w-full bg-zinc-800 rounded-lg resize-none" name="description" id="description"
+                    placeholder="Enter description"></textarea>
+                <button type="submit" onClick="submitHandler('<%= filename %>')"
+                    class="text-xl font-bold bg-blue-500 hover:bg-blue-800 w-fit px-5 py-2 rounded-lg">Update Task</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('description').defaultValue = '<%= data %>';
+        alert('<%= data %>');
+
+        const submitHandler = (filename) => {
+            alert(`${filename} Updated`);
+        }
+    </script>
+</body>
+
+</html>

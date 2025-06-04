@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Backend Project - 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-zinc-900 text-white">
+    <div class="container mx-auto mt-8">
+        <div class="">
+            <h1 class="text-5xl font-bold tracking-tighter my-5">Tasks</h1>
+            <form action="/create" method="post" class="p-10 w-full flex flex-col gap-5" action="">
+                <input type="text" class="p-2 w-full bg-zinc-800 rounded-lg" name="title" id="title"
+                    placeholder="Enter title">
+                <textarea class="p-2 w-full bg-zinc-800 rounded-lg resize-none" name="description" id="description"
+                    placeholder="Enter description"></textarea>
+                <button type="submit"
+                    class="text-xl font-bold bg-blue-500 hover:bg-blue-800 w-fit px-5 py-2 rounded-lg">Create Task</button>
+            </form>
+        </div>
+        <div class="p-10 flex flex-wrap gap-5">
+            <% if (files.length> 0) { %>
+                <% files.forEach((file)=> { %>
+                    <div class="flex flex-col justify-between w-[300px] gap-5 bg-zinc-800 rounded-lg p-5">
+                        <h1 class="text-3xl font-bold">
+                            <%= file %>
+                        </h1>
+                        <div class="flex justify-between">
+                            <a class="text-md text-blue-500 hover:underline w-fit" href="/file/<%= file.split(' ').join('') %>">Read More...</a>
+                            <a class="text-md text-zinc-400 hover:underline w-fit" href="/edit/<%= file.split(' ').join('') %>">Edit</a>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h3 class="text-md text-zinc-600 font-bold">No Tasks Yet.</h3>
+            <% } %>
+        </div>
+</body>
+
+</html>

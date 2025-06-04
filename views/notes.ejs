@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= filename %></title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-zinc-900 text-white">
+    <div class="container mx-auto mt-8 flex flex-col gap-10">
+        <div class="flex justify-between">
+            <a class="tracking-tighter text-blue-500" href="/">&lt;- &nbsp;&nbsp;Go Back</a>
+            <button onClick="confirmDeletion('<%= filename %>')" class="text-2xl font-bold text-red-500">Delete</Button>
+        </div>
+        <h1 class="text-5xl font-bold tracking-tighter my-5"><%= filename %></h1>
+        <p class="text-2xl font-light"><%= data %></p>
+    </div>
+
+
+    <script>
+        function confirmDeletion(filename) {
+            if (confirm(`Are you sure you want to delete ${filename}?`)) {
+                alert(`${filename} deleted successfully!`);
+                window.location.href = `/file/delete/${filename}`;
+            }
+        }
+    </script>
+</body>
+</html>
